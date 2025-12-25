@@ -202,16 +202,16 @@ export function UniversitySearchChat({
       <Dialog open={loginOpen} onOpenChange={setLoginOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
               Welcome to OEN
             </DialogTitle>
-            <DialogDescription className="text-slate-600">
+            <DialogDescription className="text-slate-300">
               Please login to access the course fee search system
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleLogin} className="space-y-4 mt-4">
             <div className="space-y-2">
-              <label htmlFor="username" className="text-sm font-medium text-slate-700">
+              <label htmlFor="username" className="text-sm font-medium text-slate-200">
                 Username
               </label>
               <Input
@@ -222,12 +222,12 @@ export function UniversitySearchChat({
                   setAuth((p) => ({ ...p, username: e.target.value }))
                   setLoginError("")
                 }}
-                className="h-11"
+                className="h-11 bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 autoFocus
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-medium text-slate-700">
+              <label htmlFor="password" className="text-sm font-medium text-slate-200">
                 Password
               </label>
               <Input
@@ -239,11 +239,11 @@ export function UniversitySearchChat({
                   setAuth((p) => ({ ...p, password: e.target.value }))
                   setLoginError("")
                 }}
-                className="h-11"
+                className="h-11 bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
               />
             </div>
             {loginError && (
-              <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md p-3">
+              <div className="text-sm text-red-400 bg-red-900/30 border border-red-700 rounded-md p-3">
                 {loginError}
               </div>
             )}
@@ -251,7 +251,7 @@ export function UniversitySearchChat({
               <LogIn className="w-4 h-4 mr-2" />
               Login
             </Button>
-            <p className="text-xs text-center text-slate-500">
+            <p className="text-xs text-center text-slate-400">
               Default: username: <span className="font-mono">admin</span>, password: <span className="font-mono">password</span>
             </p>
           </form>
@@ -259,16 +259,16 @@ export function UniversitySearchChat({
       </Dialog>
 
       <div className="max-w-4xl mx-auto">
-        <Card className="flex flex-col h-[600px] shadow-xl border-0 overflow-hidden">
+        <Card className="flex flex-col h-[600px] shadow-xl border border-slate-700 overflow-hidden bg-slate-800">
           {/* Chat Messages */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-blue-50 via-white to-slate-50">
+          <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-slate-800 via-slate-800 to-slate-900">
           {messages.map((message) => (
             <div key={message.id} className={`flex ${message.type === "user" ? "justify-end" : "justify-start"}`}>
               <div
                 className={`max-w-2xl ${
                   message.type === "user"
                     ? "bg-blue-600 text-white rounded-lg rounded-tr-none"
-                    : "bg-white text-slate-900 rounded-lg rounded-tl-none border border-slate-200"
+                    : "bg-slate-700 text-slate-100 rounded-lg rounded-tl-none border border-slate-600"
                 } px-4 py-3`}
               >
                 <p className="text-sm mb-2">{message.content}</p>
@@ -286,8 +286,8 @@ export function UniversitySearchChat({
           ))}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-white text-slate-900 rounded-lg rounded-tl-none border border-slate-200 px-4 py-3 flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin text-blue-600" />
+              <div className="bg-slate-700 text-slate-100 rounded-lg rounded-tl-none border border-slate-600 px-4 py-3 flex items-center gap-2">
+                <Loader2 className="w-4 h-4 animate-spin text-blue-400" />
                 <span className="text-sm">Searching universities...</span>
               </div>
             </div>
@@ -296,13 +296,13 @@ export function UniversitySearchChat({
         </div>
 
         {/* Input Area */}
-        <div className="border-t border-slate-200 bg-white p-4 shadow-lg">
+        <div className="border-t border-slate-700 bg-slate-800 p-4 shadow-lg">
           {!auth.isAuthed ? (
-            <div className="flex items-center justify-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
-              <Lock className="w-5 h-5 text-blue-600" />
+            <div className="flex items-center justify-center gap-3 p-4 bg-gradient-to-r from-blue-900/50 to-indigo-900/50 rounded-lg border border-blue-700">
+              <Lock className="w-5 h-5 text-blue-400" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-slate-700">Please login to search</p>
-                <p className="text-xs text-slate-500">Click the login button in the top left to get started</p>
+                <p className="text-sm font-medium text-slate-200">Please login to search</p>
+                <p className="text-xs text-slate-400">Click the login button in the top left to get started</p>
               </div>
               <Button
                 onClick={() => setLoginOpen(true)}
@@ -323,7 +323,7 @@ export function UniversitySearchChat({
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     disabled={isLoading}
-                    className="pl-10 h-12 border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20"
+                    className="pl-10 h-12 border-slate-600 bg-slate-700 text-slate-100 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
                   />
                 </div>
                 <Button
@@ -336,8 +336,8 @@ export function UniversitySearchChat({
                 </Button>
               </form>
               <div className="flex items-center gap-2 mt-3">
-                <Sparkles className="w-4 h-4 text-blue-500" />
-                <p className="text-xs text-slate-500">
+                <Sparkles className="w-4 h-4 text-blue-400" />
+                <p className="text-xs text-slate-400">
                   Try searches like "computer science", "APU", or "engineering in Malaysia"
                 </p>
               </div>
@@ -424,7 +424,7 @@ function UniversityCard({ university }: UniversityCardProps) {
   }
 
   return (
-    <div className="border border-slate-300 rounded-lg overflow-hidden">
+    <div className="border border-slate-600 rounded-lg overflow-hidden bg-slate-800">
       <div className={`${getHeaderColor()} px-4 py-3 text-white flex items-start gap-3`}>
         <div className="w-10 h-10 flex-shrink-0 rounded-full bg-white border border-white/30 flex items-center justify-center overflow-hidden">
           <img src={getLogoPath()} alt={university.name} className="w-full h-full object-contain" />
@@ -435,10 +435,10 @@ function UniversityCard({ university }: UniversityCardProps) {
           {university.matchContext && <p className={`text-xs ${getTextColorOpacity()} mt-1`}>Matched by {university.matchContext}</p>}
         </div>
       </div>
-      <div className="p-4 bg-slate-50">
+      <div className="p-4 bg-slate-800">
         <div className="flex flex-wrap gap-2 mb-4">
           {university.courses.map((course) => (
-            <span key={course} className={`text-xs bg-white border ${getTagColors()} px-2 py-1 rounded-full`}>
+            <span key={course} className={`text-xs bg-slate-700 border ${getTagColors()} px-2 py-1 rounded-full`}>
               {course}
             </span>
           ))}
@@ -449,14 +449,14 @@ function UniversityCard({ university }: UniversityCardProps) {
             const tuition = fee.tuitionFee ?? fee.annualFee
             const summaryLine = fee.mode ? `${fee.mode} · ${fee.duration}` : fee.duration
             return (
-              <div key={idx} className="bg-white rounded p-3 border border-slate-200">
+              <div key={idx} className="bg-slate-700 rounded p-3 border border-slate-600">
                 <button
                   onClick={() => setExpandedCourse(expandedCourse === label ? null : label)}
                   className={`w-full text-left flex justify-between items-center ${getHoverColor()} -mx-3 -my-3 px-3 py-3 rounded`}
                 >
                   <div className="pr-3">
-                    <p className="font-medium text-slate-900">{label}</p>
-                    <p className="text-sm text-slate-600">{summaryLine}</p>
+                    <p className="font-medium text-slate-100">{label}</p>
+                    <p className="text-sm text-slate-300">{summaryLine}</p>
                   </div>
                   <div className="text-right">
                     <p className={`font-bold ${getFeeColor()}`}>{tuition}</p>
@@ -464,7 +464,7 @@ function UniversityCard({ university }: UniversityCardProps) {
                   </div>
                 </button>
                 {expandedCourse === label && (
-                  <div className="mt-3 pt-3 border-t border-slate-200 text-xs text-slate-600 space-y-1">
+                  <div className="mt-3 pt-3 border-t border-slate-600 text-xs text-slate-300 space-y-1">
                     {fee.applicationFee && (
                       <p>
                         <span className="font-semibold">Application:</span> {fee.applicationFee}
@@ -583,10 +583,10 @@ function AdminPanel({ auth, setAuth, data, setData }: AdminPanelProps) {
   }
 
   return (
-    <Card className="mt-6 p-4 space-y-4">
+    <Card className="mt-6 p-4 space-y-4 bg-slate-800 border-slate-700">
       <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-slate-800">Admin</h3>
-        {auth.isAuthed && <span className="text-xs text-green-600">Signed in</span>}
+        <h3 className="font-semibold text-slate-200">Admin</h3>
+        {auth.isAuthed && <span className="text-xs text-green-400">Signed in</span>}
       </div>
 
       {!auth.isAuthed ? (
@@ -595,14 +595,14 @@ function AdminPanel({ auth, setAuth, data, setData }: AdminPanelProps) {
             placeholder="Username"
             value={auth.username}
             onChange={(e) => setAuth((p) => ({ ...p, username: e.target.value }))}
-            className="w-40"
+            className="w-40 bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
           />
           <Input
             placeholder="Password"
             type="password"
             value={auth.password}
             onChange={(e) => setAuth((p) => ({ ...p, password: e.target.value }))}
-            className="w-40"
+            className="w-40 bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
           />
           <Button type="submit" className="bg-blue-600 text-white">
             Sign in
@@ -612,36 +612,39 @@ function AdminPanel({ auth, setAuth, data, setData }: AdminPanelProps) {
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div>
-              <h4 className="font-medium text-sm mb-2 text-slate-700">Add University</h4>
+              <h4 className="font-medium text-sm mb-2 text-slate-200">Add University</h4>
               <div className="space-y-2">
                 <Input
                   placeholder="Name"
                   value={newUni.name}
                   onChange={(e) => setNewUni((p) => ({ ...p, name: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Location"
                   value={newUni.location}
                   onChange={(e) => setNewUni((p) => ({ ...p, location: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Course tag (optional)"
                   value={newUni.course}
                   onChange={(e) => setNewUni((p) => ({ ...p, course: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
-                <Button type="button" onClick={addUniversity} className="w-full bg-slate-800 text-white">
+                <Button type="button" onClick={addUniversity} className="w-full bg-slate-700 hover:bg-slate-600 text-white">
                   Add University
                 </Button>
               </div>
             </div>
 
             <div className="md:col-span-2">
-              <h4 className="font-medium text-sm mb-2 text-slate-700">Add Programme to a University</h4>
+              <h4 className="font-medium text-sm mb-2 text-slate-200">Add Programme to a University</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <select
                   value={selectedUniId}
                   onChange={(e) => setSelectedUniId(e.target.value)}
-                  className="border border-slate-300 rounded px-3 py-2 text-sm"
+                  className="border border-slate-600 bg-slate-700 text-slate-100 rounded px-3 py-2 text-sm"
                 >
                   <option value="">Select university</option>
                   {data.map((u) => (
@@ -654,46 +657,55 @@ function AdminPanel({ auth, setAuth, data, setData }: AdminPanelProps) {
                   placeholder="Programme name"
                   value={program.level}
                   onChange={(e) => setProgram((p) => ({ ...p, level: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Mode"
                   value={program.mode ?? ""}
                   onChange={(e) => setProgram((p) => ({ ...p, mode: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Duration (e.g., 4.0 years)"
                   value={program.duration ?? ""}
                   onChange={(e) => setProgram((p) => ({ ...p, duration: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Application fee"
                   value={program.applicationFee ?? ""}
                   onChange={(e) => setProgram((p) => ({ ...p, applicationFee: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Registration fee"
                   value={program.registrationFee ?? ""}
                   onChange={(e) => setProgram((p) => ({ ...p, registrationFee: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Tuition fee"
                   value={program.tuitionFee ?? ""}
                   onChange={(e) => setProgram((p) => ({ ...p, tuitionFee: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Total yearly fees"
                   value={program.totalYearlyFees ?? ""}
                   onChange={(e) => setProgram((p) => ({ ...p, totalYearlyFees: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="Total fee"
                   value={program.totalFee ?? ""}
                   onChange={(e) => setProgram((p) => ({ ...p, totalFee: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
                 <Input
                   placeholder="2025 intake"
                   value={program.intake2025 ?? ""}
                   onChange={(e) => setProgram((p) => ({ ...p, intake2025: e.target.value }))}
+                  className="bg-slate-700 border-slate-600 text-slate-100 placeholder:text-slate-400"
                 />
               </div>
               <Button
